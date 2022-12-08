@@ -36,7 +36,7 @@ fn solve_day1(input: &str) -> u64 {
         let mut diff = set1.intersection(&set2);
         let val = diff.next().unwrap();
         let val_as_uint = calc_value(val);
-        println!("{half_1} {half_2} {val} {val_as_uint}");
+        // println!("{half_1} {half_2} {val} {val_as_uint}");
 
         total += val_as_uint;
     }
@@ -66,7 +66,7 @@ fn solve_day2(input: &str) -> u64 {
 }
 
 pub fn solve() -> SolutionPair {
-    let input = fs::read_to_string("src/days/day03.txt").expect("File should not fail");
+    let input = fs::read_to_string("input/day03.txt").expect("File should not fail");
     let sol1: u64 = solve_day1(&input);
     let sol2: u64 = solve_day2(&input);
 

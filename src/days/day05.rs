@@ -110,7 +110,7 @@ fn solve_day2(input: &str) -> String {
     result
 }
 pub fn solve() -> SolutionPair {
-    let input = fs::read_to_string("src/days/day05.txt").expect("File should not fail");
+    let input = fs::read_to_string("input/day05.txt").expect("File should not fail");
     let sol1: String = solve_day1(&input);
     let sol2: String = solve_day2(&input);
 

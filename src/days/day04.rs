@@ -8,7 +8,7 @@ fn parse_range(range: &str) -> HashSet<u64> {
     let stop: u64 = range_iter.next().unwrap().parse().unwrap();
 
     let s = HashSet::from_iter(start..=stop);
-    println!("{s:?}");
+    //println!("{s:?}");
     s
 }
 
@@ -45,7 +45,7 @@ fn solve_day2(input: &str) -> u64 {
 }
 
 pub fn solve() -> SolutionPair {
-    let input = fs::read_to_string("src/days/day04.txt").expect("File should not fail");
+    let input = fs::read_to_string("input/day04.txt").expect("File should not fail");
     let sol1: u64 = solve_day1(&input);
     let sol2: u64 = solve_day2(&input);
 

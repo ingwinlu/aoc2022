@@ -21,7 +21,7 @@ fn solve_day2(input: &str) -> u64 {
     generic_solver(input, 14)
 }
 pub fn solve() -> SolutionPair {
-    let input = fs::read_to_string("src/days/day06.txt").expect("File should not fail");
+    let input = fs::read_to_string("input/day06.txt").expect("File should not fail");
     let sol1 = solve_day1(&input);
     let sol2 = solve_day2(&input);
 
