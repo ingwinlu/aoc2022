@@ -11,12 +11,12 @@ struct Folder {
 }
 
 impl Folder {
-    fn new(name: &str, parent: Option<Node>) -> Self {
-        Self {
+    fn new(name: &str, parent: Option<Node>) -> Node {
+        Rc::new(RefCell::new(Self {
             name: name.to_string(),
             children: Vec::new(),
             parent,
-        }
+        }))
     }
 
     fn add_child(self: &mut Self, child: FolderChild) {
@@ -101,7 +101,7 @@ impl fmt::Debug for FolderChild {
 
 fn parse(input: &str) -> Node {
     let lines = input.lines();
-    let root = Rc::new(RefCell::new(Folder::new("/", None)));
+    let root = Folder::new("/", None);
     let mut current = root.clone();
     let mut parse_ls = false;
     for line in lines {
@@ -117,7 +117,7 @@ fn parse(input: &str) -> Node {
             _ if line.starts_with("$ cd ") => {
                 // bug here when doing $ cd .., would need to track current path
                 let new_dir = &line[5..];
-                let new_folder = Rc::new(RefCell::new(Folder::new(new_dir, Some(current.clone()))));
+                let new_folder = Folder::new(new_dir, Some(current.clone()));
                 current
                     .borrow_mut()
                     .add_child(FolderChild::Folder(new_folder.clone()));
