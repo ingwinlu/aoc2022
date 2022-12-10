@@ -72,23 +72,6 @@ mod tests {
     }
 
     #[test]
-    fn sample_day_1_long() {
-        let input = indoc! {"
-        2-88,13-89
-        12-94,12-94
-        34-69,34-61
-        9-76,9-9
-        35-82,34-52
-        9-10,10-88
-        57-71,71-75
-        50-71,71-91
-        44-67,43-43
-        "};
-        let result = solve_day1(input);
-        assert_eq!(result, 4);
-    }
-
-    #[test]
     fn sample_day_2() {
         let input = indoc! {"
             2-4,6-8
