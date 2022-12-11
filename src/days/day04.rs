@@ -1,5 +1,5 @@
 use crate::{Solution, SolutionPair};
-use std::{collections::HashSet, fs};
+use std::collections::HashSet;
 ///////////////////////////////////////////////////////////////////////////////
 
 fn parse_range(range: &str) -> HashSet<u64> {
@@ -45,7 +45,7 @@ fn solve_day2(input: &str) -> u64 {
 }
 
 pub fn solve() -> SolutionPair {
-    let input = fs::read_to_string("input/day04.txt").expect("File should not fail");
+    let input = include_str!("../../input/day04.txt");
     let sol1: u64 = solve_day1(&input);
     let sol2: u64 = solve_day2(&input);
 

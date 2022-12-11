@@ -1,4 +1,4 @@
-use std::{collections::HashMap, collections::HashSet, fs};
+use std::{collections::HashMap, collections::HashSet};
 
 use crate::{Solution, SolutionPair};
 
@@ -66,7 +66,7 @@ fn solve_day2(input: &str) -> u64 {
 }
 
 pub fn solve() -> SolutionPair {
-    let input = fs::read_to_string("input/day03.txt").expect("File should not fail");
+    let input = include_str!("../../input/day03.txt");
     let sol1: u64 = solve_day1(&input);
     let sol2: u64 = solve_day2(&input);
 

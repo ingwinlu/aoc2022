@@ -1,5 +1,4 @@
 use crate::{Solution, SolutionPair};
-use std::fs;
 
 fn beats(in1: &char, in2: &char) -> bool {
     if (in1 == &'A' && in2 == &'Z')
@@ -62,7 +61,7 @@ fn solve_day2(input: &str) -> u64 {
 }
 
 pub fn solve() -> SolutionPair {
-    let input = fs::read_to_string("input/day02.txt").expect("File should not fail");
+    let input = include_str!("../../input/day02.txt");
     let sol1: u64 = solve_day1(&input);
     let sol2: u64 = solve_day2(&input);
 
