@@ -1,10 +1,13 @@
+use std::sync::OnceLock;
+
 use crate::{Solution, SolutionPair};
-use lazy_static::lazy_static;
 use regex::Regex;
 
-lazy_static! {
-    static ref MOVE_RE: Regex =
-        Regex::new(r"^move (?P<amount>\d+) from (?P<from>\d+) to (?P<to>\d+)$").unwrap();
+fn move_re() -> &'static regex::Regex {
+    static MOVE_RE_2: OnceLock<Regex> = OnceLock::new();
+    MOVE_RE_2.get_or_init(|| {
+        Regex::new(r"^move (?P<amount>\d+) from (?P<from>\d+) to (?P<to>\d+)$").unwrap()
+    })
 }
 
 fn solve_day1(input: &str) -> String {
@@ -25,7 +28,7 @@ fn solve_day1(input: &str) -> String {
     }
 
     for instruction in instructions.lines() {
-        let instr_parsed = MOVE_RE
+        let instr_parsed = move_re()
             .captures(instruction)
             .expect(&format!("{instruction} could not be parsed"));
         let amount: usize = instr_parsed
@@ -76,7 +79,7 @@ fn solve_day2(input: &str) -> String {
     }
 
     for instruction in instructions.lines() {
-        let instr_parsed = MOVE_RE
+        let instr_parsed = move_re()
             .captures(instruction)
             .expect(&format!("{instruction} could not be parsed"));
         let amount: usize = instr_parsed
